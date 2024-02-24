@@ -5,7 +5,7 @@ const { MongoClient, ServerApiVersion ,ObjectId} = require('mongodb');
 const app=express();
 const port =process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({origin:"*",credential:true,methods:['GET', 'POST','PUT','DELETE','OPTIONS','PATCH']}));
 app.use(express.json())
 
 
@@ -30,8 +30,8 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    const usersExample = client.db("crudDb");
-    const userCollection = usersExample.collection("userCollection");
+    // const usersExample = client.db("crudDb");
+    // const userCollection = usersExample.collection("userCollection");
     const ServicesExample = client.db("Services");
     const servicesCollection=ServicesExample.collection("Types")
     
